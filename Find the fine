@@ -1,0 +1,50 @@
+import java.util.*;
+
+class A{
+
+    public static void main(String args[])
+    {
+        int n,date,no;
+        Scanner s = new Scanner(System.in);
+        n = s.nextInt();
+        int sum[] = new int[n];
+        int carNo[][] = new int[n][];
+        int penalties[][] = new int[n][];
+        for(int i = 0 ; i<n ; i++)
+        {
+            ArrayList<Integer> q = new ArrayList<>();
+            no = s.nextInt();
+            date = s.nextInt();
+            carNo[i] = new int[no];
+            penalties[i] = new int[no];
+            for(int j = 0 ; j<no ; j++)
+            {
+                carNo[i][j] = s.nextInt();
+                if(date%2 == 0)
+                {
+                    if(carNo[i][j]%2 != 0) {
+                        q.add(j);
+                    }
+                }
+                else
+                {
+                    if(carNo[i][j]%2 == 0) {
+                        q.add(j);
+                    }
+                }
+            }
+            for(int k = 0 ; k<no ; k++)
+            {
+                penalties[i][k] = s.nextInt();
+            }
+            for(int l = 0 ; l<q.size() ; l++)
+            {
+                sum[i] = sum[i] + penalties[i][q.get(l)];
+            }
+        }
+        for(int i = 0 ; i<n ; i++)
+        {
+            System.out.println(sum[i]);
+        }
+    }
+}
